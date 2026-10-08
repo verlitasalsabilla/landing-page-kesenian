@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produk Kesenian</title>
+
+<style>
+
+/* ================= RESET ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    overflow-x:hidden;
+    color:white;
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+    width:100%;
+    position:fixed;
+    top:0;
+    z-index:1000;
+    background:rgba(0,0,0,0.5);
+    backdrop-filter:blur(5px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    position: relative;
+    z-index: 999;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid white;
+}
+
+.logo h2{
+    color:#ffeaa7;
+}
+
+nav ul{
+    display:flex;
+    gap:20px;
+    list-style:none;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    padding:10px 15px;
+    border-radius:12px;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    background:#ff9f43;
+}
+
+.search-box input{
+    padding:10px 18px;
+    border:none;
+    border-radius:25px;
+    outline:none;
+    width:200px;
+    position: relative;
+    z-index: 1000;
+}
+
+/* ================= HOME ================= */
+
+.home{
+    min-height:100vh;
+    background:linear-gradient(135deg,#6b1c1c,#d11010,#fc5501);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:100px 50px 50px;
+}
+
+.home-box{
+    width:90%;
+    max-width:950px;
+    background:rgba(255,255,255,0.1);
+    padding:50px;
+    border-radius:30px;
+    text-align:center;
+    box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+.home-box h1{
+    font-size:60px;
+    margin-bottom:20px;
+    color:#ffeaa7;
+}
+
+.home-box p{
+    font-size:21px;
+    line-height:1.8;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:14px 35px;
+    background:#ffeaa7;
+    color:black;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+    background:white;
+}
+
+/* ================= TITLE ================= */
+
+.title{
+    text-align:center;
+    font-size:45px;
+    margin-bottom:50px;
+    color:#ffeaa7;
+}
+
+/* ================= PRODUK ================= */
+
+.produk{
+    padding:100px 50px;
+    background:linear-gradient(135deg,#290000,#6e0000,#b65959);
+}
+
+.produk-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,0.1);
+    border-radius:25px;
+    overflow:hidden;
+    transition:0.4s;
+    box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:20px;
+    text-align:center;
+}
+
+.card-content h3{
+    margin-bottom:10px;
+    color:#ffeaa7;
+}
+
+/* ================= IMG SATU SATU ================= */
+
+.img1{height:220px;}
+.img2{height:220px;}
+.img3{height:220px;}
+.img4{height:220px;}
+.img5{height:220px;}
+.img6{height:220px;}
+.img7{height:220px;}
+.img8{height:220px;}
+.img9{height:220px;}
+.img10{height:220px;}
+.img11{height:220px;}
+.img12{height:220px;}
+.img13{height:220px;}
+.img14{height:220px;}
+.img15{height:220px;}
+.img16{height:220px;}
+.img17{height:220px;}
+.img18{height:220px;}
+.img19{height:220px;}
+.img20{height:220px;}
+.img21{height:220px;}
+.img22{height:220px;}
+.img23{height:220px;}
+.img24{height:220px;}
+
+/* ================= FAVORIT ================= */
+
+.favorit{
+    padding:100px 50px;
+    background:linear-gradient(135deg,#a21f1f,#c86868,#c97373);
+}
+
+.favorit-container{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.fav-card{
+    width:320px;
+    background:white;
+    color:black;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+.fav-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.fav-content{
+    padding:20px;
+    text-align:center;
+}
+
+/* ================= REVIEW ================= */
+
+.review{
+    padding:100px 50px;
+    background:linear-gradient(135deg,#460000,#9a1818,#dd4e4e);
+}
+
+.review-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.review-box{
+    background:rgba(255,255,255,0.1);
+    padding:25px;
+    border-radius:20px;
+    border-left:5px solid #ffeaa7;
+}
+
+.review-box h3{
+    margin-bottom:10px;
+    color:#ffeaa7;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:black;
+    text-align:center;
+    padding:20px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+nav{
+    flex-direction:column;
+    gap:15px;
+}
+
+.home-box h1{
+    font-size:40px;
+}
+
+.title{
+    font-size:35px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+<div class="logo">
+<img src="logo.jpg" alt="">
+<h2>Produk Kesenian</h2>
+</div>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#produk">Produk</a></li>
+<li><a href="#favorit">Favorit</a></li>
+<li><a href="#review">Review</a></li>
+</ul>
+
+<div class="search-box">
+<input type="text" placeholder="Cari produk...">
+</div>
+
+</nav>
+
+<!-- ================= HOME ================= -->
+
+<section class="home" id="home">
+
+<div class="home-box">
+
+<h1>Produk Kesenian Jaranan</h1>
+
+<p>
+Bahan pentasmu bolo terjamin tambah josjis .
+Temukan berbagai baju kesenian dan keperluan lain yang
+cocok untuk pentas,dan koleksi seni budaya,
+produk kesenian berkualitas siap membuat penampilanmu lebih berkelas!.
+</p>
+
+<a href="#produk" class="btn">Lihat Produk</a>
+
+</div>
+
+</section>
+
+<!-- ================= PRODUK ALAT ================= -->
+
+<section class="produk" id="produk">
+
+<h1 class="title">Jaranan Kelas Pentas</h1>
+
+<div class="produk-container">
+
+<div class="card">
+<img src="barongan.jpg" class="img1">
+<div class="card-content">
+<h3>Rampak Barong</h3>
+<p>Rampak barong siun gantung,kayu waru,jamang kulit,siap pentas.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="celeng kembr.jpeg" class="img2">
+<div class="card-content">
+<h3>Celeng Bahan Kulit</h3>
+<p>Celeng bahan kulit,free rambut,kelas pentas.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="kepang pegon1.jpeg" class="img3">
+<div class="card-content">
+<h3>Jaran Kepang Pegon</h3>
+<p>Bahan berkualitas,gebang,satu set isi 6,pegon,kelas pentas.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="bujang ganong2.jpeg" class="img4">
+<div class="card-content">
+<h3>Bujang Ganong</h3>
+<p>Bahan kayu kuat,berkualitas,rambut kuda.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="kepala reog.jpeg" class="img5">
+<div class="card-content">
+<h3>Kepala reog</h3>
+<p>Bahan kulit sapi,rambut sapi berkualitas,free melati.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="topeng mayangkara.jpeg" class="img6">
+<div class="card-content">
+<h3>Dadak Merak Reog</h3>
+<p>Tinggal pasang,bulu merak asli,anti brodol.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="kucingan.jpeg" class="img7">
+<div class="card-content">
+<h3>Kucingan</h3>
+<p>Bahan kayu waru,gigitan spek kayu halus.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="rampak jagal.jpeg" class="img8">
+<div class="card-content">
+<h3>Rampak barong</h3>
+<p>Barongan telon,kayu nangka,jamang kulit.</p>
+</div>
+</div>
+
+</div>
+
+<br><br><br>
+
+<!-- ================= Aksesoris ================= -->
+
+<h1 class="title">AKSESORIS</h1>
+
+<div class="produk-container">
+
+<div class="card"><img src="celana wol.jpeg" class="img10"><div class="card-content"><h3>Celana Barongan</h3><p>Bahan Wol,Dewasa,Siap Pentas.</p></div></div>
+
+<div class="card"><img src="celana kain.jpeg" class="img11"><div class="card-content"><h3>Celana Barongan</h3><p>Bahan Kain,Siap Pentas.</p></div></div>
+
+<div class="card"><img src="https://cf.shopee.co.id/file/18f4af51f308adbd1dddced7b5acc8f5" class="img12"><div class="card-content"><h3>Kemul Barongan</h3><p>Bahan Kain,Kelas Pentas,Dewasa.</p></div></div>
+
+<div class="card"><img src="https://down-id.img.susercontent.com/file/30a1a0ae704478dcee88b1c78642927f" class="img13"><div class="card-content"><h3>Baju Celeng</h3><p>Satu set tinggal pakai,Ukuran Dewasa.</p></div></div>
+
+<div class="card"><img src="baju kepang .jpeg" class="img14"><div class="card-content"><h3>Baju Kepang</h3><p>Satu set,Bisa Riues Warna.</p></div></div>
+
+<div class="card"><img src="bujang ganong.jpeg" class="img15"><div class="card-content"><h3>Baju Bujang Ganong</h3><p>Satu set tinggal pakai,ditambah sempyok.</p></div></div>
+
+<div class="card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcFcblonv3WYadFsdeTXwcu9lZ9_yyvzGccw&s" class="img16"><div class="card-content"><h3>Baju Reog</h3><p>Kemeja motif reog cocok untuk bopo,Bahan Tebal.</p></div></div>
+
+<div class="card"><img src="sempyok.jpeg" class="img17"><div class="card-content"><h3>Sempyok</h3><p>Full mernak-mernik,cocok untuk jathilan,Kelas Pentas.</p></div></div>
+
+<div class="card"><img src="https://down-id.img.susercontent.com/file/9fec6372f83463dcdbc8228b1b8d9e98" class="img18"><div class="card-content"><h3>Sumping Jaranan</h3><p>Sumping telinga alusan,Siap pakai.</p></div></div>
+
+<div class="card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1ejEVFMTL-O6kfpADr7frWq0M-VQg6Y-0tQ&s" class="img19"><div class="card-content"><h3>Udeng Jaranan</h3><p>Cocok untuk udeng jathil,penari ebeg,dll.</p></div></div>
+</div>
+
+</section>
+
+<!-- ================= FAVORIT ================= -->
+
+<section class="favorit" id="favorit">
+
+<h1 class="title">Produk Baju</h1>
+
+<div class="favorit-container">
+
+<div class="fav-card">
+<img src="disain cetak baju.jpeg">
+<div class="fav-content">
+<h2>Baju Jaranan</h2>
+<p>
+Produk paling favorit untuk pertunjukan budaya modern.
+</p>
+</div>
+</div>
+
+<div class="fav-card">
+<img src="baju2.jpeg">
+<div class="fav-content">
+<h2>Gamelan Jawa</h2>
+<p>
+Alat musik tradisional dengan kualitas suara terbaik.
+</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= REVIEW ================= -->
+
+<section class="review" id="review">
+
+<h1 class="title">Review Jujur Pelanggan</h1>
+
+<div class="review-container">
+
+<div class="review-box">
+<h3>⭐⭐⭐⭐⭐ - Rina</h3>
+<p>Baju jaranannya bagus dan nyaman dipakai pentas.</p>
+</div>
+
+<div class="review-box">
+<h3>⭐⭐⭐⭐⭐ - Aldi</h3>
+<p>Gamelannya suaranya jernih dan kualitasnya bagus.</p>
+</div>
+
+<div class="review-box">
+<h3>⭐⭐⭐⭐ - Dimas</h3>
+<p>Batik modernnya keren buat acara seni.</p>
+</div>
+
+<div class="review-box">
+<h3>⭐⭐⭐⭐⭐ - Siska</h3>
+<p>Rebana nya kuat dan suaranya mantap.</p>
+</div>
+
+<div class="review-box">
+<h3>⭐⭐⭐⭐⭐ - Lala</h3>
+<p>Baju tari Bali nya mewah banget.</p>
+</div>
+
+<div class="review-box">
+<h3>⭐⭐⭐⭐ - Kevin</h3>
+<p>Bonangnya bagus dan cocok untuk latihan.</p>
+</div>
+
+<div class="review-box">
+<h3>⭐⭐⭐⭐⭐ - Nanda</h3>
+<p>Baju pentas seni nya nyaman dipakai lama.</p>
+</div>
+
+<div class="review-box">
+<h3>⭐⭐⭐⭐⭐ - Tono</h3>
+<p>Seruling bambunya punya suara yang lembut.</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 Produk Kesenian | Budaya Nusantara Modern 🎭</p>
+
+</body>
+</html>
